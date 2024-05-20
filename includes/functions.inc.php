@@ -5,4 +5,9 @@ function isloggedin(){
     else return false;
 }
 
+function isadmin(){
+    if (isset($_SESSION['username']) && $_SESSION['username'] == admin) return true;
+    else return false;
+}
+
 ?>

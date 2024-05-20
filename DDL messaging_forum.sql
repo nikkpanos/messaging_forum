@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS rental_cars;
+DROP DATABASE IF EXISTS messaging_forum;
 CREATE DATABASE IF NOT EXISTS messaging_forum CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE rental_cars;
+USE messaging_forum;
 SET NAMES 'utf8mb4';
 
 CREATE TABLE user (
