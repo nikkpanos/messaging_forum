@@ -37,16 +37,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     if (empty($errors)){
         require_once('mysqli_connect.php'); //Connection with db. This is supposed to be outside of the web application's folder
-        $q = "SELECT username, password, firstname, lastname, level, email, approved FROM user WHERE username=?"; // Preformating a query
+        $q = "SELECT id, username, password, firstname, lastname, level, email, approved FROM user WHERE username=?"; // Preformating a query
         $stmt = mysqli_prepare($dbc, $q); // Creating a prepared statement using the db connection and the preformated query
         mysqli_stmt_bind_param($stmt, 's', $username); // Filling the missing parameters of the prepared statement
         mysqli_stmt_execute($stmt); // Quering the db
         mysqli_stmt_store_result($stmt); // Storing the results in the $stmt
         if (mysqli_stmt_num_rows($stmt) == 1) { // Check if exactly one row(record) is stored
-            mysqli_stmt_bind_result($stmt, $username, $password_hashed, $firstname, $lastname, $level, $email, $approved); // Matches the values of the record's columns in each variable
+            mysqli_stmt_bind_result($stmt, $userid, $username, $password_hashed, $firstname, $lastname, $level, $email, $approved); // Matches the values of the record's columns in each variable
             mysqli_stmt_fetch($stmt); // Passes the values of the first record (we only have one record in this example) to the matched variables 
             if ($approved == 1){
                 if (password_verify($password, $password_hashed)) {
+                    $_SESSION['userid'] = $userid;
                     $_SESSION['username'] = $username;
                     $_SESSION['firstname'] = $firstname;
                     $_SESSION['lastname'] = $lastname;
