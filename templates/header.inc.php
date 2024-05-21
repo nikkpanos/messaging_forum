@@ -20,7 +20,7 @@ require_once('includes/functions.inc.php');
                 <nav column="8" class="nav">
                     <ul>
                         <li><a href="home.php">Αρχική Σελίδα</a></li>
-                        <li><a href="units.php">Θεματικές Ενότητες</a></li>
+                        <li><a href="showunits.php">Θεματικές Ενότητες</a></li>
                         <?php
                             if (isloggedin()){
                                 print '<li><a href="profile.php">Προφίλ</a></li>'; print("\n");

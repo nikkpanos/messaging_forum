@@ -21,9 +21,9 @@ CREATE TABLE unit (
 	CONSTRAINT unit_pk PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
+DROP TABLE IF EXISTS thread;
 CREATE TABLE thread (
 	id				INTEGER			NOT NULL UNIQUE AUTO_INCREMENT,
-	creationDate	DATE			NOT NULL,
 	header			VARCHAR(50)		NOT NULL,
 	userid			INTEGER			NOT NULL,
 	unitid			INTEGER			NOT NULL,
@@ -32,13 +32,23 @@ CREATE TABLE thread (
 	CONSTRAINT thread_unit_fk FOREIGN KEY (unitid) REFERENCES unit(id) ON UPDATE CASCADE ON DELETE RESTRICT
 )ENGINE=InnoDB;
 
+DROP TABLE IF EXISTS message;
 CREATE TABLE message (
 	id				INTEGER			NOT NULL UNIQUE AUTO_INCREMENT,
-	creationDate	DATE			NOT NULL,
-	lastModDate		DATE			NOT NULL,
+	text			VARCHAR(1000)	NOT NULL,
 	userid 			INTEGER		 	NOT NULL,
 	threadid		INTEGER			NOT NULL,
 	CONSTRAINT message_pk PRIMARY KEY (id),
 	CONSTRAINT message_user_fk FOREIGN KEY (userid) REFERENCES user(id) ON UPDATE CASCADE ON DELETE RESTRICT,
 	CONSTRAINT message_thread_fk FOREIGN KEY (threadid) REFERENCES thread(id) ON UPDATE CASCADE ON DELETE RESTRICT
 )ENGINE=InnoDB;
+
+
+INSERT INTO unit(name) values("Ζώα");
+INSERT INTO unit(name) values("Οικογένεια");
+INSERT INTO unit(name) values("Χόμπυ");
+
+
+INSERT INTO thread(header, userid, unitid) values("Το κατοικίδιό μου", 1, 1);
+INSERT INTO thread(header, userid, unitid) values("Η γάτα το έσκασε", 1, 1);
+INSERT INTO thread(header, userid, unitid) values("Ο αδελφός μου ο αρκούδος", 1, 2);

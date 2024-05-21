@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         mysqli_stmt_execute($stmt); // Quering the db
         mysqli_stmt_store_result($stmt); // Storing the results in the $stmt
         if (mysqli_stmt_num_rows($stmt) == 1) { // Check if exactly one row(record) is stored
-            mysqli_stmt_bind_result($stmt, $username, $password, $firstname, $lastname, $level, $email, $approved); // Matches the values of the record's columns in each variable
+            mysqli_stmt_bind_result($stmt, $username, $password_hashed, $firstname, $lastname, $level, $email, $approved); // Matches the values of the record's columns in each variable
             mysqli_stmt_fetch($stmt); // Passes the values of the first record (we only have one record in this example) to the matched variables 
             if ($approved == 1){
                 if (password_verify($password, $password_hashed)) {
