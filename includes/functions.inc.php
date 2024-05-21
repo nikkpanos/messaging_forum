@@ -21,7 +21,7 @@ function getunits(){
     if (mysqli_stmt_num_rows($stmt) == 0) {
         print "<p>Δεν βρέθηκαν θεματικές ενότητες</p>\n";
     } else {
-        print "<table>\n";
+        print "<table style='text-align: center'>\n";
         print "<tr>\n<th>Θεματική Ενότητα</th>\n<th>Ενέργεια</th>\n</tr>\n";
         while (mysqli_stmt_fetch($stmt)) {
             print "<tr>\n<td>$unit</td>\n<td><a href='showthreads.php?unitid=$id'>Μετάβαση</a></td>\n</tr>\n";
@@ -43,7 +43,7 @@ function getthreads($unitid){
     if (mysqli_stmt_num_rows($stmt) == 0) {
         print "<p>Δεν βρέθηκαν συζητήσεις στη συγκεκριμένη θεματική ενότητα</p>\n";
     } else {
-        print "<table>\n";
+        print "<table style='text-align: center'>\n";
         print "Συζυτήσεις\n";
         print "<tr>\n<th>Επικεφαλίδα</th>\n<th>Χρήστης που τη ξεκίνησε</th>\n<th>Ενέργεια</th>\n</tr>\n";
         while (mysqli_stmt_fetch($stmt)) {
