@@ -98,8 +98,7 @@ if (!isloggedin()){
             print "<th>Επίθετο</th>\n";
             print "<th>Δικαιώματα</th>\n";
             print "<th>Email</th>\n";
-            print "<th>Αλλαγή δικαιωμάτων</th>\n";
-            print "<th>Διαγραφή λογαριασμού</th></tr>\n";
+            print "<th>Αλλαγή δικαιωμάτων</th></tr>\n";
             while (mysqli_stmt_fetch($stmt)) {
                 print "<tr>\n<td>$id</td>\n";
                 print "<td>$username</td>\n";
@@ -111,7 +110,6 @@ if (!isloggedin()){
                 print "</td>\n";
                 print "<td>$email</td>\n";
                 print "<td><a href='change_user_level.php?userid=$id&level=$level'><img src='icons/upd.png' height='20px'></a></td>\n";
-                print "<td><a href='delete_user.php?userid=$id'><img src='icons/del.png' height='20px'></a></td></tr>\n";
             }
             print "</table>\n";
         }
