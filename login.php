@@ -6,6 +6,11 @@ define('VALIDATION', 2);
 define('APPROVED', 3);
 require_once('templates/header.inc.php');
 
+if (isloggedin()){
+    ob_end_clean();
+    header("Location: profile.php");
+    exit;
+}
 /*  
     1.  First we check if the form was submitted.
         1.1 If not, then the form is printed with no error messages.
